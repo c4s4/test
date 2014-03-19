@@ -1,0 +1,10 @@
+- build:   raspitools
+  default: check
+  extends: ":python:python.yml"
+  alias:
+    check: py_check
+
+- properties:
+    name:         raspitools
+    py_chk_src:   "."
+

@@ -1,7 +1,7 @@
 package main
 
 import "fmt"
-Import "yaml"
+import "yaml"
 
 func main() {
     config := yaml.ConfigFile("config.yml")

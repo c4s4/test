@@ -29,6 +29,7 @@ import (
     "fmt"
     "os/exec"
     "io/ioutil"
+    "path/filepath"
     "gopkg.in/yaml.v1"
 )
 
@@ -61,6 +62,12 @@ func loadConfig(file string) Config {
     if err != nil {
         panic(err.Error())
     }
+    // make directory absolute path
+    absdir, err := filepath.Abs(config.Directory)
+    if err != nil {
+        panic(err.Error())
+    }
+    config.Directory = absdir
     return config
 }
 
@@ -105,15 +112,23 @@ func buildModule(name string, config Config) Build {
     }
 }
 
-func main() {
-    config := loadConfig("config.yml")
-    builds := make(map[string] Build)
-    success := true
+func buildModules(config Config) map[string]Build {
+    builds := make(map[string]Build)
     for module := range(config.Modules) {
-        build := buildModule(module, config)
-        builds[module] = build
-        success = success && build.Success
+        builds[module] = buildModule(module, config)
     }
+    return builds
+}
+
+func main() {
+    for i:=0; i<len(os.Args); i++ {
+        config := loadConfig(os.Args[i])
+        builds := buildModules(config)
+        sendReport(builds)
+    }
+}
+
+    success := true
     if success {
         fmt.Println("OK")
     } else {

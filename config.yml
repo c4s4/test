@@ -9,10 +9,5 @@ modules:
   continuum:
     url:     https://github.com/c4s4/continuum.git
     command: |
-      set -e
-      export PATH=/opt/python/current/bin:$PATH
-      virtualenv env --no-site-packages
-      . env/bin/activate
-      pip install -r etc/requirements.txt
-      bee test
+      echo "TEST"
 

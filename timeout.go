@@ -16,8 +16,6 @@ func NewClient(timeout time.Duration) *http.Client {
 			}
 			deadline := time.Now().Add(timeout * time.Millisecond)
 			connection.SetDeadline(deadline)
-			connection.SetReadDeadline(deadline)
-			connection.SetWriteDeadline(deadline)
 			return connection, nil
 		},
 	}

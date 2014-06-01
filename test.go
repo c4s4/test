@@ -13,6 +13,6 @@ Some *random* text, **nothing** important!`
 )
 
 func main() {
-    output := blackfriday.MarkdownBasic(input)
+    output := blackfriday.MarkdownBasic([]byte(input))
     println(output)
 }

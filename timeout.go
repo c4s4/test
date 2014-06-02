@@ -24,7 +24,7 @@ func NewClient(timeout time.Duration) *http.Client {
 }
 
 func main() {
-	client := NewClient(0)
+	client := NewClient(50)
 	start := time.Now()
 	response, err := client.Get("http://google.com")
 	if err != nil {

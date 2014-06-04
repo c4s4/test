@@ -9,9 +9,11 @@
 
  <!-- catch the root element -->
  <xsl:template match="/xhtml">
+  <!--
   <?xml version="1.0" encoding="UTF-8"?>
   <!DOCTYPE weblog PUBLIC "-//CAFEBABE//DTD weblog 1.0//EN"
                           "../dtd/weblog.dtd">
+  -->
   <weblog id=""
           date="">
    <title></title>

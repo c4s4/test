@@ -5,45 +5,46 @@ import (
     "github.com/russross/blackfriday"
     "os/exec"
     "io/ioutil"
-    "bytes"
-    "io"
     "fmt"
 )
 
-func processXslt(xslFile string, input []byte) {
-    command := exec.Command("xsltproc", xslFile, "-")
-    stdin, err := command.StdinPipe()
+const (
+    xslFile = "md2xml.xsl"
+)
+
+func processXsl(xslFile, xmlFile string) ([]byte) {
+    command := exec.Command("xsltproc", xslFile, xmlFile)
+    result, err := command.CombinedOutput()
     if err != nil {
         panic(err)
     }
-    stdout, err := command.StdoutPipe()
+    return result
+}
+
+func markdown2xhtml(filename string) ([]byte) {
+    markdown, err := ioutil.ReadFile(filename)
     if err != nil {
         panic(err)
     }
-    err = command.Start()
+    xhtml := "<xhtml>\n" + string(blackfriday.MarkdownCommon([]byte(markdown))) + "\n</xhtml>"
+    return []byte(xhtml)
+}
+
+func processFile(filename string) string {
+    xhtml := markdown2xhtml(filename)
+    xmlFile, err := ioutil.TempFile("/tmp", "md2xml-")
     if err != nil {
         panic(err)
     }
-    io.Copy(stdin, bytes.NewBuffer(input))
-    io.Copy(os.Stdout, stdout)
-    err = command.Wait()
-    if err != nil {
-        panic(err)
-    }
+    defer os.Remove(xmlFile.Name())
+    ioutil.WriteFile(xmlFile.Name(), xhtml, 0755)
+    result := processXsl(xslFile, xmlFile.Name())
+    return string(result)
 }
 
 func main() {
     for _, filename := range os.Args[1:len(os.Args)] {
-        file, err := os.Open(filename)
-        if err != nil {
-            panic(err)
-        }
-        input, err := ioutil.ReadAll(file)
-        if err != nil {
-            panic(err)
-        }
-        output := blackfriday.MarkdownCommon([]byte(input))
-        fmt.Println(string(output))
-        processXslt("md2xml.xsl", output)
+        fmt.Println(processFile(filename))
     }
 }
+

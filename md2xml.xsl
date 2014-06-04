@@ -6,7 +6,7 @@ Stylesheet to transform an XHTML document to XML one.
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="1.0">
 
-  <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
+  <xsl:output method="xml" encoding="UTF-8"/>
   <xsl:param name="id">ID</xsl:param>
   <xsl:param name="date">DATE</xsl:param>
   <xsl:param name="title">TITLE</xsl:param>

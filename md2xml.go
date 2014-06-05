@@ -47,8 +47,56 @@ Stylesheet to transform an XHTML document to XML one.
     <p><imp><xsl:apply-templates/></imp></p>
   </xsl:template>
 
+  <xsl:template match="h4">
+    <p><imp><xsl:apply-templates/></imp></p>
+  </xsl:template>
+
+  <xsl:template match="h5">
+    <p><imp><xsl:apply-templates/></imp></p>
+  </xsl:template>
+
+  <xsl:template match="h6">
+    <p><imp><xsl:apply-templates/></imp></p>
+  </xsl:template>
+
   <xsl:template match="p">
     <p><xsl:apply-templates/></p>
+  </xsl:template>
+
+  <xsl:template match="ul">
+    <list><xsl:apply-templates/></list>
+  </xsl:template>
+
+  <xsl:template match="ol">
+    <enum><xsl:apply-templates/></enum>
+  </xsl:template>
+
+  <xsl:template match="li">
+    <item><xsl:apply-templates/></item>
+  </xsl:template>
+
+  <xsl:template match="table">
+    <table><xsl:apply-templates/></table>
+  </xsl:template>
+
+  <xsl:template match="th">
+    <th><xsl:apply-templates/></th>
+  </xsl:template>
+
+  <xsl:template match="tr">
+    <li><xsl:apply-templates/></li>
+  </xsl:template>
+
+  <xsl:template match="td">
+    <co><xsl:apply-templates/></co>
+  </xsl:template>
+
+  <xsl:template match="pre">
+    <source><xsl:apply-templates/></source>
+  </xsl:template>
+
+  <xsl:template match="img">
+    <figure url="{@src}" width="{@width}" height="{@height}"/>
   </xsl:template>
 
   <xsl:template match="em">
@@ -57,6 +105,10 @@ Stylesheet to transform an XHTML document to XML one.
 
   <xsl:template match="strong">
     <imp><xsl:apply-templates/></imp>
+  </xsl:template>
+
+  <xsl:template match="code">
+    <code><xsl:apply-templates/></code>
   </xsl:template>
 
 </xsl:stylesheet>`

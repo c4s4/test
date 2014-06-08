@@ -3,16 +3,29 @@
 
 import sqlite3
 
+QUERY = "SELECT title, text FROM entries WHERE id=%s"
+TEMPLATE = '''# id:       %(index)s
+# title:    %(title)s
+# author:   Michel Casabianca
+# email:    michel.casabianca@gmail.com
+# keywords: 
+
+%(text)s'''
+
 connection = sqlite3.connect('sweetblog.db')
 cursor = connection.cursor()
-for index in range(100):
-    result = cursor.execute("SELECT text FROM entries WHERE id=%s" % index).fetchone()
-    print result
-
-#cursor = connection.cursor()
-#cursor.execute("DROP TABLE IF EXISTS user")
-#cursor.execute("CREATE TABLE user (id integer, name text)")
-#cursor.execute("INSERT INTO user (id, name) VALUES (1, 'TOTO'), (2, 'TATA');")
-#connection.commit()
-#connection.close()
+number = cursor.execute("SELECT count(*) FROM entries").fetchone()[0]
+for index in range(number):
+    result = cursor.execute(QUERY % index).fetchone()
+    if result:
+        title = result[0].strip()
+        text = result[1].strip()
+        params = {
+            'index': index,
+            'title': title,
+            'text':  text,
+        }
+        open("/tmp/%s.bd" % index, 'wb').write(TEMPLATE % params) 
+        print index, title
+connection.close()
 

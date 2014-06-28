@@ -20,4 +20,4 @@ def main(user):
 
 if __name__ == '__main__':
     repos = main(USER)
-    print repos[0].keys()
+    print repos[0]['name']

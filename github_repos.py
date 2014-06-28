@@ -20,4 +20,5 @@ def main(user):
 
 if __name__ == '__main__':
     repos = main(USER)
-    print repos[0]['name']
+    names = sorted([repo['name'] for repo in repos])
+    print ' '.join(names)

@@ -19,4 +19,5 @@ def main(user):
     return json.loads(response.body)
 
 if __name__ == '__main__':
-    print main(USER)
+    repos = main(USER)
+    print sort(repos[0].keys())

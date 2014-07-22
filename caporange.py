@@ -9,6 +9,7 @@ OFFERTES = 146 + 80
 TOTAL = GARANTIES + CLASSIQUES + OFFERTES
 
 PRIX = 9.69
+COURS_ACHAT = round(PRIX / 0.8, 2)
 
 CSG_RDS = OFFERTES * PRIX * 0.08
 PAYE = round((GARANTIES + CLASSIQUES) * PRIX + CSG_RDS, 2)
@@ -18,6 +19,7 @@ def afficher():
     print "Actions classiques: %s" % CLASSIQUES
     print "Actions offertes:   %s" % OFFERTES
     print "Actions total:      %s" % TOTAL
+    print "Cours d'achat:      %s" % COURS_ACHAT
     print "Prix d'achat:       %s" % PRIX
     print "Payé:               %s" % PAYE
 

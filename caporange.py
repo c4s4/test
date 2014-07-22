@@ -7,7 +7,7 @@ CLASSIQUES = 387
 OFFERTES = GARANTIES / 2 + CLASSIQUES / 5
 TOTAL = GARANTIES + CLASSIQUES + OFFERTES
 
-def afficher(total):
+def afficher():
     print "Actions garanties: %s" % GARANTIES
     print "Actions classiques: %s" % CLASSIQUES
     print "Actions offertes: %s" % OFFERTES

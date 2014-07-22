@@ -4,6 +4,8 @@
 import sys
 
 COURS = 11.63
+if len(sys.argv) > 1:
+    COURS = float(sys.argv[1])
 
 GARANTIES  = 293
 CLASSIQUES = 387
@@ -33,9 +35,6 @@ def afficher():
     print "Plus-value:         %s" % PLUS_VALUE
 
 def main():
-    global COURS
-    if len(sys.argv) > 1:
-        COURS = float(sys.argv[1])
     afficher()
 
 if __name__ == '__main__':

@@ -8,11 +8,16 @@ CLASSIQUES = 387
 OFFERTES = 146 + 80
 TOTAL = GARANTIES + CLASSIQUES + OFFERTES
 
+PRIX = 9.69
+PAYE = (GARANTIES + CLASSIQUES) * PRIX
+
 def afficher():
-    print "Actions garanties: %s" % GARANTIES
+    print "Actions garanties:  %s" % GARANTIES
     print "Actions classiques: %s" % CLASSIQUES
-    print "Actions offertes: %s" % OFFERTES
-    print "Actions total: %s" % TOTAL
+    print "Actions offertes:   %s" % OFFERTES
+    print "Actions total:      %s" % TOTAL
+    print "Prix d'achat:       %s" % PRIX
+    print "Payé:               %s" % PAYE
 
 def main():
     afficher()

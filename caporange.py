@@ -11,7 +11,7 @@ TOTAL = GARANTIES + CLASSIQUES + OFFERTES
 PRIX = 9.69
 
 CSG_RDS = OFFERTES * PRIX * 0.08
-PAYE = (GARANTIES + CLASSIQUES) * PRIX + CSG_RDS
+PAYE = round((GARANTIES + CLASSIQUES) * PRIX + CSG_RDS, 2)
 
 def afficher():
     print "Actions garanties:  %s" % GARANTIES

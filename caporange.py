@@ -28,13 +28,14 @@ def afficher():
     print "Cours d'achat:      %s" % COURS_ACHAT
     print "Prix d'achat:       %s" % PRIX
     print "Payé:               %s" % PAYE
+    print "Cours actuel:       %s" % COURS
     print "Valeur:             %s" % VALEUR
     print "Plus-value:         %s" % PLUS_VALUE
 
 def main():
     global COURS
     if len(sys.argv) > 1:
-        COURS = int(sys.argv[1])
+        COURS = float(sys.argv[1])
     afficher()
 
 if __name__ == '__main__':

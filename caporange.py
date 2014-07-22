@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # encoding: UTF-8
 
+import os
+
 COURS = 11.63
 
 GARANTIES  = 293

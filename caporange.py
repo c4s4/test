@@ -15,7 +15,9 @@ def main():
     response = http1.get(URL)
     if response.status != 200:
         error("Bad status %s" % response.status)
-    print response.body
+    index = response.body.index('11,62')
+    print "index: %s" % index
+    #print response.body
 
 if __name__ == '__main__':
     main()

@@ -30,6 +30,9 @@ def afficher():
     print "Plus-value:         %s" % PLUS_VALUE
 
 def main():
+    global COURS
+    if len(os.argv) > 1:
+        COURS = int(os.argv[1])
     afficher()
 
 if __name__ == '__main__':

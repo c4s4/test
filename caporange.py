@@ -1,23 +1,20 @@
 #!/usr/bin/env python
 # encoding: UTF-8
 
-import os
-import http1
+GARANTIES  = 293
+CLASSIQUES = 387
 
-ACTION = 'ORA.PA'
-URL = "http://finance.yahoo.com/q?s=%s" % ACTION
+OFFERTES = GARANTIES / 2 + CLASSIQUES / 5
+TOTAL = GARANTIES + CLASSIQUES + OFFERTES
 
-def error(message):
-    print message
-    os.exit(1)
+def afficher(total):
+    print "Actions garanties: %s" % GARANTIES
+    print "Actions classiques: %s" % CLASSIQUES
+    print "Actions offertes: %s" % OFFERTES
+    print "Actions total: %s" % TOTAL
 
 def main():
-    response = http1.get(URL)
-    if response.status != 200:
-        error("Bad status %s" % response.status)
-    index = response.body.index('11,62')
-    print "index: %s" % index
-    #print response.body
+    afficher()
 
 if __name__ == '__main__':
     main()

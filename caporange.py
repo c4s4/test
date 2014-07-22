@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: UTF-8
 
-import os
+import sys
 
 COURS = 11.63
 
@@ -33,8 +33,8 @@ def afficher():
 
 def main():
     global COURS
-    if len(os.argv) > 1:
-        COURS = int(os.argv[1])
+    if len(sys.argv) > 1:
+        COURS = int(sys.argv[1])
     afficher()
 
 if __name__ == '__main__':

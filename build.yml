@@ -1,6 +1,16 @@
 # NeON build file (http://github.com/c4s4/neon)
 
-extends: c4s4/build/go-tool.yml
+default: test
+extends:
+- c4s4/build/git.yml
+- c4s4/build/changelog.yml
 
 properties:
   NAME: 'test'
+
+targets:
+
+  test:
+    doc: Test target
+    steps:
+    - print: 'In test target'

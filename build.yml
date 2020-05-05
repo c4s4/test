@@ -14,3 +14,4 @@ targets:
     doc: Test target
     steps:
     - print: 'In test target'
+
